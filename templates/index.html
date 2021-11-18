@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="HTMX Practice">
+    <meta name="author" content="PyBites">
+    <title>HTMX Practice</title>
+    <script src="https://unpkg.com/htmx.org@1.5.0" integrity="sha384-oGA+prIp5Vchu6we2YkI51UtVzN9Jpx2Z7PnR1I78PnZlN8LkrCT4lqqqmDkyrvI" crossorigin="anonymous"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>HTMX Practice</h1>
+
+    <select name="makers"
+      hx-get="/makers"
+      hx-trigger="load">
+
+    </select>
+
+    <select id="cars" name="tcolumn"
+      hx-get="/cars" hx-trigger="change">
+    </select>
+
+
+  </body>
+</html>
