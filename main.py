@@ -22,18 +22,19 @@ cars = get_data()
 
 
 @app.get("/")
-def read_root(request: Request):
-    context = {"request": request}
-    return templates.TemplateResponse("index.html", context)
-
-@app.get("/makers")
 def get_makers(request: Request):
     context = {
         "request": request,
         "makers": sorted(cars.keys()),
     }
-    return templates.TemplateResponse("_makers.html", context)
+    return templates.TemplateResponse("index.html", context)
 
-@app.get("/cars/{item_id}")
-def get_car(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+
+@app.get("/cars")
+def get_cars(request: Request, makers: str):
+    maker_cars = cars[makers]
+    context = {
+        "request": request,
+        "cars": maker_cars,
+    }
+    return templates.TemplateResponse("_cars.html", context)

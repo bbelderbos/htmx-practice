@@ -15,13 +15,17 @@
     <h1>HTMX Practice</h1>
 
     <select name="makers"
-      hx-get="/makers"
-      hx-trigger="load">
-
+      hx-get="/cars" hx-trigger="change" hx-target="#cars">
+      <option value="0">---</option>
+      {% for make in makers %}
+        <option value="{{ make }}">{{ make }}</option>
+      {% endfor %}
     </select>
 
-    <select id="cars" name="tcolumn"
-      hx-get="/cars" hx-trigger="change">
+    <select id="cars">
+    </select>
+
+    <select id="cars2">
     </select>
 
 
