@@ -22,19 +22,29 @@ cars = get_data()
 
 
 @app.get("/")
-def get_makers(request: Request):
+def home(request: Request):
     context = {
         "request": request,
-        "makers": sorted(cars.keys()),
     }
     return templates.TemplateResponse("index.html", context)
 
 
+@app.get("/makers")
+def get_makers(request: Request):
+    context = {
+        "request": request,
+        "collection": sorted(cars.keys()),
+    }
+    return templates.TemplateResponse("_objects.html", context)
+
+
 @app.get("/cars")
 def get_cars(request: Request, makers: str):
+    print(makers)
+    print(request["query_string"])
     maker_cars = cars[makers]
     context = {
         "request": request,
-        "cars": maker_cars,
+        "collection": maker_cars,
     }
-    return templates.TemplateResponse("_cars.html", context)
+    return templates.TemplateResponse("_objects.html", context)
